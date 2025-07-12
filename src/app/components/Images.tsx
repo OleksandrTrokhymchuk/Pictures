@@ -23,7 +23,18 @@ const imagesData = [
 
 export default function Images() {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
-    const [numberPictureForModal, setNumberPictureForModal] = useState<number>(1)
+    const [numberPictureForModal, setNumberPictureForModal] = useState<number | null>(null)
+
+    const openModal = (imgNumber: number) => {
+        setIsModalOpen(true)
+        setNumberPictureForModal(imgNumber)
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false)
+        setNumberPictureForModal(null)
+    }
+
     return (
         <>
             <p className={mainStyles["text"]}>Number of pictures: {imagesData.length}</p>
@@ -34,12 +45,12 @@ export default function Images() {
                             className={imageStyles["galleryImage"]} 
                             src={img.src}
                             alt={img.alt}
-                            onClick={() => {setIsModalOpen(!isModalOpen); setNumberPictureForModal(img.id)}}
+                            onClick={() => {openModal(img.id)}}
                         />
                     </div>
                 ))}
             </div>
-            <Modal isOpen={isModalOpen} ImageNumber={numberPictureForModal}/>
+            <Modal isOpen={isModalOpen} ImageNumber={numberPictureForModal} onClose={closeModal}/>
         </>
     )
 }
