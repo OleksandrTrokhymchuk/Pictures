@@ -1,17 +1,5 @@
 import Image from "next/image"
 import "../styles/reset.css"
-import Image1 from "../../public/images/task-2/1.jpg"
-import Image2 from "../../public/images/task-2/2.jpg"
-import Image3 from "../../public/images/task-2/3.jpg"
-import Image4 from "../../public/images/task-2/4.jpg"
-import Image5 from "../../public/images/task-2/5.jpg"
-import Image6 from "../../public/images/task-2/6.jpg"
-import Image7 from "../../public/images/task-2/7.jpg"
-import Image8 from "../../public/images/task-2/8.jpg"
-import Image9 from "../../public/images/task-2/9.jpg"
-import Image10 from "../../public/images/task-2/10.jpg"
-import Image11 from "../../public/images/task-2/11.jpg"
-import Image12 from "../../public/images/task-2/12.jpg"
 import imageStyles from "../styles/images.module.css"
 
 const imagesData = [
