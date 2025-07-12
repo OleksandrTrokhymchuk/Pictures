@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import modalStyles from "@/styles/modal/modal.module.css"
-import { use, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 interface ModalProps {
     isOpen: boolean
