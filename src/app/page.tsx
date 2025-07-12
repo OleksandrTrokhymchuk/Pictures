@@ -16,18 +16,18 @@ import Image12 from "../../public/images/task-2/12.jpg"
 export default function Home() {
   return (
     <>
-      <Image src={Image1} alt="text"/>
-      <Image src={Image2} alt="text"/>
-      <Image src={Image3} alt="text"/>
-      <Image src={Image4} alt="text"/>
-      <Image src={Image5} alt="text"/>
-      <Image src={Image6} alt="text"/>
-      <Image src={Image7} alt="text"/>
-      <Image src={Image8} alt="text"/>
-      <Image src={Image9} alt="text"/>
-      <Image src={Image10} alt="text"/>
-      <Image src={Image11} alt="text"/>
-      <Image src={Image12} alt="text"/>
+      <Image src={Image1} alt="American Truck"/>
+      <Image src={Image2} alt="Container Port"/>
+      <Image src={Image3} alt="Plane"/>
+      <Image src={Image4} alt="Mercedes-Benz Truck"/>
+      <Image src={Image5} alt="Farm Truck"/>
+      <Image src={Image6} alt="Containers"/>
+      <Image src={Image7} alt="Volvo Truck"/>
+      <Image src={Image8} alt="Volvo Truck"/>
+      <Image src={Image9} alt="Ship"/>
+      <Image src={Image10} alt="Iveco Trucks"/>
+      <Image src={Image11} alt="Ship"/>
+      <Image src={Image12} alt="Ship"/>
     </>
   )
 }
