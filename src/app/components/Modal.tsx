@@ -1,8 +1,8 @@
 "use client"
 
-import Image from "next/image"
+import Image, { StaticImageData } from "next/image"
 import modalStyles from "@/styles/modal/modal.module.css"
-import { useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 
 interface ModalProps {
     isOpen: boolean
@@ -11,26 +11,45 @@ interface ModalProps {
 }
 
 export default function Modal({ isOpen, ImageNumber, onClose }: ModalProps) {
-    const img = require(`../../../public/images/task-2/${ImageNumber ? ImageNumber : 1}.jpg`).default
+    // const img = require(`../../../public/images/task-2/${ImageNumber ? ImageNumber : 1}.jpg`).default
 
+    const [imageSrc, setImageSrc] = useState<StaticImageData | null>(null)
     const [showModal, setShowModal] = useState<boolean>(false)
     const [isClosing, setIsClosing] = useState<boolean>(false)
 
     useEffect(() => {
         if (isOpen) {
-            setShowModal(true);
-            setIsClosing(false);
+            setShowModal(true)
+            setIsClosing(false)
         }
-    }, [isOpen]);
+    }, [isOpen])
 
-    const handleClose = () => {
+    const handleClose = useCallback(() => {
         setIsClosing(true)
         setTimeout(() => {
             setShowModal(false)
             onClose()
         }, 300)
-    }
+    }, [onClose])
 
+
+    useEffect(() => {
+        if (isOpen) {
+            setShowModal(true)
+            setIsClosing(false)
+            const loadImage = async () => {
+                try {
+                    const imgModule = await import(`../../../public/images/task-2/${ImageNumber ? ImageNumber : 1}.jpg`)
+                    setImageSrc(imgModule.default)
+                } catch (e) {
+                    console.error(e)
+                }
+            }
+            loadImage()
+        } else {
+            setImageSrc(null)
+        }
+    }, [isOpen, ImageNumber])
 
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
@@ -39,7 +58,7 @@ export default function Modal({ isOpen, ImageNumber, onClose }: ModalProps) {
             }
         }
 
-        if (isOpen) {
+        if (showModal) {
             document.addEventListener('keydown', handleKeyDown)
             modalOverlayRef.current?.addEventListener("click", handleClose)
         }
@@ -48,7 +67,7 @@ export default function Modal({ isOpen, ImageNumber, onClose }: ModalProps) {
             document.removeEventListener('keydown', handleKeyDown)
             modalOverlayRef.current?.removeEventListener("click", handleClose)
         }
-    }, [isOpen, handleClose])
+    }, [showModal, handleClose])
 
     const modalOverlayRef = useRef<HTMLDivElement>(null) 
 
@@ -58,8 +77,8 @@ export default function Modal({ isOpen, ImageNumber, onClose }: ModalProps) {
         <>
             {showModal && (
                 <div className={`${modalStyles["modalOverlay"]} ${isClosing ? modalStyles["fadeOut"] : ''}`} ref={modalOverlayRef}>
-                    <div className={`${modalStyles["modalContent"]} ${isClosing ? modalStyles["fadeOut"] : ''}`}>
-                        <Image src={img} alt="Modal"/>
+                    <div className={`${modalStyles["modalContent"]} ${isClosing ? modalStyles["fadeOut"] : ''}`} onClick={(e) => e.stopPropagation()}>
+                        {imageSrc && <Image src={imageSrc} alt="Modal" />}
                         <button 
                         className={modalStyles["closeButton"]}
                         onClick={handleClose}
