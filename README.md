@@ -1,7 +1,7 @@
 You experience the single Next.js Application (deployed on Vercel) where you can see some defferent pictures, number of them and current datetime.
 The pictures have many interesting animations. Moreover, you have an ability to remove and restore them.
 
-To run the project on your localhosr open the terminal (Ctrl + Shift + `) and enter "git clone https://github.com/OleksandrTrokhymchuk/Pictures.git".
+To run the project on your localhost open the terminal (Ctrl + Shift + `) and enter "git clone https://github.com/OleksandrTrokhymchuk/Pictures.git".
 Then enter npm install if you do not have it.
 Then follow to the localhost link.
 
