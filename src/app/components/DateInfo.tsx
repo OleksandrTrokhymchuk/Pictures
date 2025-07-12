@@ -1,3 +1,5 @@
+import mainStyles from "@/styles/main/main.module.css"
+
 export default function DateInfo() {
     const now = new Date()
   
@@ -9,6 +11,8 @@ export default function DateInfo() {
     const minutes = now.getMinutes().toString().padStart(2, '0')
 
     return(
-        <p>{day}.{month}.{year} {hours}:{minutes}</p>
+        <div style={{marginTop: "20px"}}>
+            <p className={mainStyles["text"]}>{day}.{month}.{year} {hours}:{minutes}</p>
+        </div>
     )
 }

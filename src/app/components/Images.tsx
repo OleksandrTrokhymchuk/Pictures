@@ -1,5 +1,6 @@
 import Image from "next/image";
 import imageStyles from "@/styles/images/images.module.css"
+import mainStyles from "@/styles/main/main.module.css"
 
 const imagesData = [
     { src: require("../../../public/images/task-2/1.jpg").default, alt: "American Truck" },
@@ -19,7 +20,7 @@ const imagesData = [
 export default function Images() {
     return (
         <>
-            <p>Number of pictures: {imagesData.length}</p>
+            <p className={mainStyles["text"]}>Number of pictures: {imagesData.length}</p>
             <div className={imageStyles["image__container"]}> 
                 {imagesData.map((img, index) => (
                     <div key={index} className={imageStyles["galleryItem"]}> 
