@@ -1,5 +1,5 @@
 import Image from "next/image";
-import imageStyles from "../../styles/images.module.css"
+import imageStyles from "@/styles/images/images.module.css"
 
 const imagesData = [
     { src: require("../../../public/images/task-2/1.jpg").default, alt: "American Truck" },
