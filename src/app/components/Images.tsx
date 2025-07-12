@@ -16,18 +16,22 @@ const imagesData = [
   { src: require("../../../public/images/task-2/12.jpg").default, alt: "Ship in port" }, 
 ];
 
+
 export default function Images() {
     return (
-        <div className={imageStyles["image__container"]}> 
-          {imagesData.map((img, index) => (
-            <div key={index} className={imageStyles["galleryItem"]}> 
-              <Image
-                className={imageStyles["galleryImage"]} 
-                src={img.src}
-                alt={img.alt}
-              />
+        <>
+            <p>Number of pictures: {imagesData.length}</p>
+            <div className={imageStyles["image__container"]}> 
+                {imagesData.map((img, index) => (
+                    <div key={index} className={imageStyles["galleryItem"]}> 
+                        <Image
+                          className={imageStyles["galleryImage"]} 
+                          src={img.src}
+                          alt={img.alt}
+                        />
+                    </div>
+                ))}
             </div>
-          ))}
-        </div>
+        </>
     )
 }
