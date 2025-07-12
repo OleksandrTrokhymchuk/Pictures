@@ -1,6 +1,6 @@
 "use client"
 
-import Image from "next/image"
+import Image, { StaticImageData } from "next/image"
 import imageStyles from "@/styles/images/images.module.css"
 import mainStyles from "@/styles/main/main.module.css"
 import { useEffect, useState, useMemo } from "react"
@@ -21,7 +21,7 @@ import img12 from "../../../public/images/task-2/12.jpg"
 
 interface ImageData {
     id: number
-    src: any
+    src: StaticImageData
     alt: string
 }
 
