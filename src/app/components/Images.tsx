@@ -102,6 +102,7 @@ export default function Images() {
                             src={img.src}
                             alt={img.alt}
                             onClick={() => {openModal(img.id)}}
+                            priority
                         />
                         <button 
                             className={imageStyles["removeImage"]}
