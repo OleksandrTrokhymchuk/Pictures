@@ -18,6 +18,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     @media (min-width: 900px) {
         &:nth-child(4n + 1) .galleryImage {
             border-color: red;
@@ -45,6 +46,27 @@
         &:hover {
             border-color: yellow !important;
             transform: rotate(45deg);
+        }
+    }
+}
+
+.removeImage {
+    background-color: transparent;
+    font-size: 20px;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    bottom: 0;
+    right: 0;    
+    font-weight: bold;
+    color: #8d0000;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+
+    @media (any-hover: hover) {
+        &:hover {
+            transform: scale(1.2);  
+            color: red;
         }
     }
 }

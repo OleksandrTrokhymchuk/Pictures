@@ -47,6 +47,9 @@ export default function Images() {
                             alt={img.alt}
                             onClick={() => {openModal(img.id)}}
                         />
+                        <button className={imageStyles["removeImage"]}>
+                            &times;
+                        </button>
                     </div>
                 ))}
             </div>
