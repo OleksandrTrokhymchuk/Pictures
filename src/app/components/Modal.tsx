@@ -13,8 +13,8 @@ interface ModalProps {
 export default function Modal({ isOpen, ImageNumber, onClose }: ModalProps) {
     const img = require(`../../../public/images/task-2/${ImageNumber ? ImageNumber : 1}.jpg`).default
 
-    const [showModal, setShowModal] = useState(false)
-    const [isClosing, setIsClosing] = useState(false)
+    const [showModal, setShowModal] = useState<boolean>(false)
+    const [isClosing, setIsClosing] = useState<boolean>(false)
 
     useEffect(() => {
         if (isOpen) {
