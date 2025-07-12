@@ -3,7 +3,7 @@
 import Image from "next/image"
 import imageStyles from "@/styles/images/images.module.css"
 import mainStyles from "@/styles/main/main.module.css"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import Modal from "./Modal"
 
 import img1 from "../../../public/images/task-2/1.jpg"
@@ -19,9 +19,15 @@ import img10 from "../../../public/images/task-2/10.jpg"
 import img11 from "../../../public/images/task-2/11.jpg"
 import img12 from "../../../public/images/task-2/12.jpg"
 
+interface ImageData {
+    id: number
+    src: any
+    alt: string
+}
+
 export default function Images() {
 
-    const imagesData = [
+    const imagesData: ImageData[] = [
         { id: 1, src: img1, alt: "American Truck" },
         { id: 2, src: img2, alt: "Container Port" },
         { id: 3, src: img3, alt: "Plane" },
@@ -35,8 +41,6 @@ export default function Images() {
         { id: 11, src: img11, alt: "Cargo Ship at sunset" }, 
         { id: 12, src: img12, alt: "Ship in port" }, 
     ]
-
-    const [displayedImages, setDisplayedImages] = useState<any[]>([])
 
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
     const [numberPictureForModal, setNumberPictureForModal] = useState<number | null>(null)
@@ -77,10 +81,11 @@ export default function Images() {
         setRemovedPictures([])
     }
 
-    useEffect(() => {
-        const filteredImages = imagesData.filter(img => !removedPictures.includes(img.id))
-        setDisplayedImages(filteredImages)
+    const displayedImages = useMemo(() => {
+        return imagesData.filter(img => !removedPictures.includes(img.id));
+    }, [removedPictures, imagesData])
 
+    useEffect(() => {
         if (isMounted && typeof window !== 'undefined') {
             localStorage.setItem("removedPictures", JSON.stringify(removedPictures))
         }
